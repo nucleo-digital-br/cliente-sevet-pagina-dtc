@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Método Loja Lucrativa | Highor, Sevet Company</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Vturb: carregamento mais rápido do player (descomentar e trocar o ID quando o vídeo da lead subir) -->
+<!-- <link rel="preload" href="https://scripts.converteai.net/8613ae52-f6c8-44a0-9cd1-201746d9a33e/players/ID_DO_PLAYER/v4/player.js" as="script"> -->
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+
+<!-- ===== PIXEL META (Sevet) ===== -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+var PIXEL_ID = '2232477994340518';
+if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView'); fbq('track', 'ViewContent', {content_name: 'MLL', value: 297, currency: 'BRL'}); }
+</script>
+
+<style>
+  :root {
+    --bg: #0d0d0c;
+    --bg-2: #161614;
+    --line: #2a2926;
+    --text: #f2efe8;
+    --muted: #a8a397;
+    --accent: #d9a441;      /* âmbar de armação de óculos */
+    --accent-ink: #1a1305;
+    --ok: #7fbf7a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font: 400 17px/1.55 Inter, system-ui, sans-serif; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 16px; }
+
+  .tarja { background: #e5484d; color: #fff; text-align: center; padding: 12px 16px; font: 800 clamp(12px, 3.7vw, 20px)/1.3 Archivo, sans-serif; text-transform: uppercase; letter-spacing: 0; white-space: nowrap; }
+  .tarja s { opacity: .85; }
+  @media (max-width: 359px) { .tarja { white-space: normal; } }
+  .tarja b { color: #ffe14d; }
+  header { padding: 22px 0 6px; text-align: center; }
+  h1 { font: 800 clamp(26px, 7vw, 36px)/1.12 Archivo, sans-serif; letter-spacing: -.01em; margin: 12px 0 10px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .sub { color: var(--muted); font-size: 16px; }
+  h1 u { text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .h1b { font: 800 clamp(19px, 5vw, 24px)/1.2 Archivo, sans-serif; margin: 4px 0 12px; }
+
+  .player { margin: 18px auto 10px; max-width: 400px; border-radius: 14px; overflow: hidden; background: #000; border: 1px solid var(--line); }
+  .player-ph { aspect-ratio: 9 / 16; display: grid; place-items: center; color: var(--muted); font-size: 14px; text-align: center; padding: 24px; }
+  .som { text-align: center; color: var(--muted); font-size: 13px; }
+
+  /* Tudo com .esconder só aparece no minuto do pitch (Vturb). */
+  .esconder { display: none; }
+
+  .cta { display: block; width: 100%; margin: 22px 0 8px; padding: 18px 16px; border: 0; border-radius: 12px; background: var(--accent); color: var(--accent-ink);
+         font: 800 19px/1.2 Archivo, sans-serif; text-align: center; text-decoration: none; text-transform: uppercase; letter-spacing: .02em; cursor: pointer; }
+  .seguro { text-align: center; color: var(--muted); font-size: 13px; }
+
+  section { padding: 34px 0; border-top: 1px solid var(--line); }
+  h2 { font: 700 23px/1.2 Archivo, sans-serif; margin-bottom: 14px; }
+  p + p { margin-top: 12px; }
+
+  .preco { background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; padding: 22px 18px; text-align: center; }
+  .preco .de { color: var(--muted); font-size: 15px; }
+  .preco .de s { color: var(--text); }
+  .preco .parc { font: 800 40px/1.05 Archivo; margin: 6px 0 2px; }
+  .preco .parc span { font-size: 20px; }
+  .preco .vista { color: var(--muted); }
+
+  ul.itens { list-style: none; }
+  ul.itens li { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  ul.itens li:last-child { border-bottom: 0; }
+  ul.itens b { display: block; font-weight: 600; }
+  ul.itens span { color: var(--muted); font-size: 15px; }
+  ul.itens i { font-style: normal; color: var(--muted); font-size: 13px; white-space: nowrap; }
+
+  .garantia { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .gar { border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .gar b { color: var(--ok); display: block; font: 700 17px Archivo; margin-bottom: 4px; }
+
+  details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  summary { cursor: pointer; font-weight: 600; list-style: none; }
+  summary::after { content: "+"; float: right; color: var(--accent); }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); margin-top: 8px; font-size: 16px; }
+
+  footer { padding: 30px 0 40px; color: #6d695f; font-size: 12px; text-align: center; border-top: 1px solid var(--line); }
+  footer p + p { margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="tarja">Aula liberada | De: <s>R$697,00</s> por: <b>R$0,00</b></div>
+
+<header class="wrap">
+  <h1>Descubra como pessoas de <em>30, 40, 50, 60+ anos</em> estão <em>faturando</em> de <u>3 a 15 mil por mês</u> vendendo pela internet...</h1>
+  <p class="h1b">...sem aparecer, sem postar vídeo, sem afiliação e sem precisar entender nada de tecnologia...</p>
+  <p class="sub">Tudo graças a um Aplicativo Novo e uma I.A que basicamente cospe, uma loja pronta pra você. Esse é o jeito mais simples, prático e seguro de ganhar online em 2026.</p>
+</header>
+
+<main class="wrap">
+  <!-- ===== PLAYER VTURB (conta HS). Teste A/B das leads é feito dentro da Vturb: cole aqui o código do player (ou do teste A/B) no lugar do bloco .player-ph. ===== -->
+  <div class="player" id="vsl">
+    <div class="player-ph">O vídeo da VSL entra aqui.</div>
+  </div>
+  <p class="som">Confira se o som do seu celular está ligado.</p>
+
+  <!-- ===== A PARTIR DAQUI, SÓ APARECE NO PITCH ===== -->
+  <div class="esconder">
+    <p class="seguro">Pagamento seguro pela Ticto · Garantia de 7 dias</p>
+
+    <section>
+      <h2>Tudo o que você leva no Método Loja Lucrativa</h2>
+      <ul class="itens">
+        <li><b>A ferramenta de IA do Método Loja Lucrativa <i>R$ 1.997</i></b><span>Acha o produto invisível para você, monta a oferta, a página e escreve os anúncios.</span></li>
+        <li><b>O passo a passo para colocar a sua loja no ar <i>R$ 997</i></b><span>Produto, página e anúncio, botão por botão, na ordem. Sem precisar saber mexer em site.</span></li>
+        <li><b>Os três números que mostram onde a sua loja perde dinheiro <i>R$ 797</i></b><span>Para não colocar dinheiro no anúncio sem saber por que não vende.</span></li>
+        <li><b>Bônus 1 · Os roteiros dos anúncios campeões da Mordaça <i>R$ 497</i></b><span>Os mesmos dos R$ 220 mil de julho. É só adaptar para o seu produto.</span></li>
+        <li><b>Bônus 2 · A planilha de lucro por anúncio <i>R$ 297</i></b><span>Para saber qual anúncio continua e qual você desliga.</span></li>
+        <li><b>Bônus 3 · Como escalar sem quebrar <i>R$ 397</i></b><span>Vender mais sem o custo de cada venda disparar.</span></li>
+        <li><b>Bônus 4 · Comunidade Loja Lucrativa <i>R$ 400</i></b><span>O grupo dos alunos, com suporte do time nos primeiros 30 dias.</span></li>
+        <li><b>Bônus 5 · Operação Aberta, ao vivo <i>R$ 997</i></b><span>Uma vez por mês, o Highor abre a operação de verdade: anúncios, números e o que está funcionando agora.</span></li>
+        <li><b>Bônus de hoje · Kits e produto a mais no checkout</b><span>Como aumentar o valor de cada venda, do jeito que a Mordaça faz.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="preco">
+        <div class="de">Tudo isso valeria <s>R$ 6.379</s>. Hoje:</div>
+        <div class="parc"><span>12x</span> R$ 30,71</div>
+        <div class="vista">ou R$ 297 à vista · pagamento único</div>
+      </div>
+      <a class="cta" id="btn-2" href="#" data-checkout>Quero entrar agora</a>
+    </section>
+
+    <section>
+      <h2>O risco é meu</h2>
+      <div class="garantia">
+        <div class="gar"><b>7 dias, sem perguntas</b>Entrou, olhou e não gostou? Me pede e eu devolvo 100% do seu dinheiro.</div>
+        <div class="gar"><b>30 dias, aplicando</b>Seguiu o passo a passo e, em 30 dias, não tem a sua loja no ar com o produto, a página e os anúncios rodando? Me mostra o que você fez e eu devolvo 100% do seu dinheiro.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Perguntas que sempre chegam</h2>
+      <details><summary>Eu nunca vendi nada. É para mim?</summary><p>É exatamente para você. O Método Loja Lucrativa é para quem nunca vendeu ou para quem tentou e não conseguiu.</p></details>
+      <details><summary>Dá para fazer pelo celular?</summary><p>Dá para começar pelo celular, sim. Com o computador fica mais rápido.</p></details>
+      <details><summary>Preciso aparecer nos vídeos?</summary><p>Não. A ferramenta te dá o roteiro pronto. Você pode gravar com alguém de confiança.</p></details>
+      <details><summary>Preciso ter estoque?</summary><p>Não. Você não precisa comprar estoque para começar.</p></details>
+      <details><summary>Isso é Shopee?</summary><p>Não. É o contrário: é o seu site, com um produto que ninguém do seu lado está vendendo.</p></details>
+      <details><summary>É pagamento único?</summary><p>É. R$ 297 à vista ou 12x de R$ 30,71. Sem mensalidade.</p></details>
+      <details><summary>Quando chega o acesso?</summary><p>Na hora. Pagou, chega no seu e-mail. A primeira aula é a "Comece aqui".</p></details>
+      <a class="cta" id="btn-3" href="#" data-checkout>Garantir minha vaga</a>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>Sevet Company · Betim, MG</p>
+  <p>Os resultados dependem da aplicação de cada pessoa. Não existe garantia de ganhos. Este site não é afiliado ao Facebook nem à Meta.</p>
+</footer>
+
+<script>
+  // ===== LINK DO CHECKOUT TICTO (oferta MLL R$ 297) =====
+  var CHECKOUT_URL = 'https://payment.ticto.app/O324C6EE0';
+
+  // Repassa as UTMs (e src) da página para o checkout. O sck fica para a Vturb (chave v3_ do rastreamento de conversões).
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var url;
+    try { url = new URL(CHECKOUT_URL); } catch (e) { return; }
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'fbclid'].forEach(function (k) {
+      if (params.get(k)) url.searchParams.set(k, params.get(k));
+    });
+    function inicioCheckout() {
+      if (window.fbq && PIXEL_ID !== 'SEU_PIXEL_ID') fbq('track', 'InitiateCheckout', {value: 297, currency: 'BRL'});
+    }
+    document.querySelectorAll('[data-checkout]').forEach(function (a) {
+      a.href = url.toString();
+      a.addEventListener('click', inicioCheckout);
+    });
+    // Botões de Ação da Vturb (dentro do vídeo): mantém o link do botão, soma as UTMs e dispara o InitiateCheckout.
+    document.addEventListener('click', function (e) {
+      var path = e.composedPath ? e.composedPath() : [];
+      for (var i = 0; i < path.length; i++) {
+        var el = path[i];
+        if (el && el.tagName === 'A' && el.href && el.href.indexOf('payment.ticto.app') !== -1 && !el.hasAttribute('data-checkout')) {
+          e.preventDefault();
+          var link = el;
+          inicioCheckout();
+          // Lê o link só na saída, para pegar o sck que a Vturb injeta no clique.
+          setTimeout(function () {
+            var destino = new URL(link.href);
+            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'fbclid'].forEach(function (k) {
+              if (params.get(k)) destino.searchParams.set(k, params.get(k));
+            });
+            location.href = destino.toString();
+          }, 150);
+          return;
+        }
+      }
+    }, true);
+  })();
+
+  // Mostra o que tem .esconder no minuto do pitch.
+  // Ajustar PITCH_SEGUNDOS quando as versões estiverem editadas (minuto em que aparece o preço).
+  var PITCH_SEGUNDOS = 0; // a definir
+  (function esperaPlayer(tentativas) {
+    var player = document.querySelector('vturb-smartplayer');
+    if (player) {
+      player.addEventListener('player:ready', function () {
+        player.displayHiddenElements(PITCH_SEGUNDOS, ['.esconder'], { persist: true });
+      });
+    } else if (tentativas > 0) {
+      setTimeout(function () { esperaPlayer(tentativas - 1); }, 300);
+    }
+  })(40);
+
+  // Enquanto não há player (rascunho), ?preview=1 mostra tudo.
+  if (new URLSearchParams(location.search).get('preview') === '1') {
+    document.querySelectorAll('.esconder').forEach(function (el) { el.style.display = 'block'; });
+  }
+</script>
+</body>
+</html>
