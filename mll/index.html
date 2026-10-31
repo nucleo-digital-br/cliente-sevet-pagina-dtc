@@ -129,14 +129,7 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
 </head>
 <body>
 
-<div class="tarja">Esse vídeo sai do ar hoje <b id="hoje"></b></div>
-<script>
-  // Data de hoje de quem está vendo (fuso do Brasil), no formato dd/mm/aaaa.
-  (function () {
-    var p = new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date());
-    document.getElementById('hoje').textContent = p;
-  })();
-</script>
+<!-- Sem tarja e sem headline (31/10): a página abre direto no vídeo. -->
 
 <!-- Headline removida em 31/10 (Meta reprovando a página). Se voltar, entra aqui dentro do <header class="wrap">. -->
 
