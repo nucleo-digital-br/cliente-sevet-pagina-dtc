@@ -75,12 +75,27 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
   .preco .parc span { font-size: 20px; }
   .preco .vista { color: var(--muted); }
 
-  ul.itens { list-style: none; }
-  ul.itens li { padding: 12px 0; border-bottom: 1px dashed var(--line); }
-  ul.itens li:last-child { border-bottom: 0; }
-  ul.itens b { display: block; font-weight: 600; }
-  ul.itens span { color: var(--muted); font-size: 15px; }
-  ul.itens i { font-style: normal; color: var(--muted); font-size: 13px; white-space: nowrap; }
+  /* ===== Bloco da oferta (empilhamento) ===== */
+  .oferta { border: 1.5px solid var(--accent); border-radius: 16px; padding: 18px 14px 26px; background: #000; }
+  .oferta h2 { text-align: center; margin-bottom: 16px; }
+  .stack { list-style: none; display: grid; gap: 8px; }
+  .stack li { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #141311; border: 1px solid #2d2b27; border-radius: 10px; padding: 12px 14px; font-size: 15px; line-height: 1.3; }
+  .stack li b { font-weight: 700; }
+  .stack li .v { flex: none; color: #e5484d; font-weight: 800; white-space: nowrap; }
+  .stack li .v s { text-decoration-thickness: 2px; }
+  .stack li.total { background: #0b0b0a; border-color: #3a3833; }
+  .stack li.total b { text-transform: uppercase; letter-spacing: .04em; }
+  .agora { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 26px 0 18px; }
+  .agora .txt { font: 800 clamp(16px, 4.6vw, 20px)/1.15 Archivo, sans-serif; text-transform: uppercase; }
+  .agora .txt small { display: block; font: 500 clamp(14px, 4vw, 17px)/1.2 Inter, sans-serif; text-transform: none; margin-top: 4px; color: var(--text); }
+  .agora .txt small b { color: var(--accent); }
+  .agora .box { flex: none; border: 1px solid #3a3833; border-radius: 12px; padding: 12px 14px; text-align: center; background: #141311; }
+  .agora .box .p { font: 800 clamp(20px, 5.6vw, 26px)/1.05 Archivo, sans-serif; white-space: nowrap; }
+  .agora .box .p span { font-size: .7em; font-weight: 600; }
+  .agora .box .a { color: var(--muted); font-size: 12px; margin-top: 4px; white-space: nowrap; }
+  @media (max-width: 380px) { .agora { flex-direction: column; text-align: center; } }
+  .cta.verde { background: #2fbf71; color: #fff; margin: 0; }
+  .fita { width: 72px; height: 110px; margin: -2px auto 0; background: repeating-linear-gradient(90deg, var(--accent) 0 3px, transparent 3px 7px); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%); opacity: .9; }
 
   .garantia { display: grid; grid-template-columns: 1fr; gap: 12px; }
   .gar { border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
@@ -119,27 +134,30 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
     <p class="seguro">Pagamento seguro pela Ticto · Garantia de 7 dias</p>
 
     <section>
-      <h2>Tudo o que você leva no Método Loja Lucrativa</h2>
-      <ul class="itens">
-        <li><b>A ferramenta de IA do Método Loja Lucrativa <i>R$ 1.997</i></b><span>Acha o produto invisível para você, monta a oferta, a página e escreve os anúncios.</span></li>
-        <li><b>O passo a passo para colocar a sua loja no ar <i>R$ 997</i></b><span>Produto, página e anúncio, botão por botão, na ordem. Sem precisar saber mexer em site.</span></li>
-        <li><b>Os três números que mostram onde a sua loja perde dinheiro <i>R$ 797</i></b><span>Para não colocar dinheiro no anúncio sem saber por que não vende.</span></li>
-        <li><b>Bônus 1 · Os roteiros dos anúncios campeões da Mordaça <i>R$ 497</i></b><span>Os mesmos dos R$ 220 mil de julho. É só adaptar para o seu produto.</span></li>
-        <li><b>Bônus 2 · A planilha de lucro por anúncio <i>R$ 297</i></b><span>Para saber qual anúncio continua e qual você desliga.</span></li>
-        <li><b>Bônus 3 · Como escalar sem quebrar <i>R$ 397</i></b><span>Vender mais sem o custo de cada venda disparar.</span></li>
-        <li><b>Bônus 4 · Comunidade Loja Lucrativa <i>R$ 400</i></b><span>O grupo dos alunos, com suporte do time nos primeiros 30 dias.</span></li>
-        <li><b>Bônus 5 · Operação Aberta, ao vivo <i>R$ 997</i></b><span>Uma vez por mês, o Highor abre a operação de verdade: anúncios, números e o que está funcionando agora.</span></li>
-        <li><b>Bônus de hoje · Kits e produto a mais no checkout</b><span>Como aumentar o valor de cada venda, do jeito que a Mordaça faz.</span></li>
-      </ul>
-    </section>
+      <div class="oferta">
+        <h2>Tudo o que você leva no Método Loja Lucrativa</h2>
+        <ul class="stack">
+          <li><b>A ferramenta de IA do Método Loja Lucrativa</b><span class="v"><s>R$ 1.997,00</s></span></li>
+          <li><b>O passo a passo para colocar a sua loja no ar</b><span class="v"><s>R$ 997,00</s></span></li>
+          <li><b>Os três números que mostram onde a sua loja perde dinheiro</b><span class="v"><s>R$ 797,00</s></span></li>
+          <li><b>BÔNUS: Roteiros dos anúncios campeões da Mordaça</b><span class="v"><s>R$ 497,00</s></span></li>
+          <li><b>BÔNUS: Planilha de lucro por anúncio</b><span class="v"><s>R$ 297,00</s></span></li>
+          <li><b>BÔNUS: Como escalar sem quebrar</b><span class="v"><s>R$ 397,00</s></span></li>
+          <li><b>BÔNUS: Comunidade Loja Lucrativa (suporte do time por 30 dias)</b><span class="v"><s>R$ 400,00</s></span></li>
+          <li><b>BÔNUS: Operação Aberta ao vivo, 1x por mês</b><span class="v"><s>R$ 997,00</s></span></li>
+          <li><b>BÔNUS DE HOJE: Kits e produto a mais no checkout</b><span class="v">Valor incalculável</span></li>
+          <li><b>Garantia dupla: 7 dias + 30 dias com a loja no ar</b><span class="v">Valor incalculável</span></li>
+          <li><b>Acesso imediato, pagamento único, sem mensalidade</b><span class="v">Valor incalculável</span></li>
+          <li class="total"><b>Total</b><span class="v"><s>R$ 6.379,00</s></span></li>
+        </ul>
 
-    <section>
-      <div class="preco">
-        <div class="de">Tudo isso valeria <s>R$ 6.379</s>. Hoje:</div>
-        <div class="parc"><span>12x</span> R$ 30,71</div>
-        <div class="vista">ou R$ 297 à vista · pagamento único</div>
+        <div class="agora">
+          <div class="txt">Mas somente agora...<small>mais de <b>R$ 6.000</b> de desconto</small></div>
+          <div class="box"><div class="p"><span>12x</span> R$ 30,71</div><div class="a">ou R$ 297,00 à vista</div></div>
+        </div>
+        <a class="cta verde" id="btn-2" href="#" data-checkout>Quero meu acesso agora</a>
       </div>
-      <a class="cta" id="btn-2" href="#" data-checkout>Quero entrar agora</a>
+      <div class="fita" aria-hidden="true"></div>
     </section>
 
     <section>
