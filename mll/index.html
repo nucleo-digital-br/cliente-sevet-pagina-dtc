@@ -103,9 +103,20 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
   .cta.verde { background: #2fbf71; color: #fff; margin: 0; }
   .fita { width: 72px; height: 110px; margin: -2px auto 0; background: repeating-linear-gradient(90deg, var(--accent) 0 3px, transparent 3px 7px); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%); opacity: .9; }
 
-  .garantia { display: grid; grid-template-columns: 1fr; gap: 12px; }
-  .gar { border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
-  .gar b { color: var(--ok); display: block; font: 700 17px Archivo; margin-bottom: 4px; }
+  /* ===== Bloco de garantia (selos dourados) ===== */
+  .garantia { text-align: center; }
+  .garantia .pre { font: 700 clamp(17px, 4.8vw, 21px)/1.3 Archivo, sans-serif; }
+  .garantia .pre + .pre { margin-top: 2px; }
+  .garantia .tit { font: 800 clamp(26px, 7.5vw, 34px)/1.1 Archivo, sans-serif; color: var(--accent); margin: 10px 0 18px; }
+  .selos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 420px; margin: 0 auto 8px; }
+  .selo { text-align: center; }
+  .selo svg { width: 100%; max-width: 190px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 10px 24px rgba(217,164,65,.28)); }
+  .selo b { display: block; margin-top: 10px; font: 800 15px/1.2 Archivo, sans-serif; text-transform: uppercase; color: var(--accent); }
+  .selo span { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .gtexto { text-align: left; max-width: 480px; margin: 22px auto 0; color: #e6e2d8; font-size: 16px; }
+  .gtexto p + p { margin-top: 12px; }
+  .gtexto strong { color: var(--text); }
+  @media (max-width: 360px) { .selos { grid-template-columns: 1fr; max-width: 220px; } }
 
   details { border-bottom: 1px solid var(--line); padding: 14px 0; }
   summary { cursor: pointer; font-weight: 600; list-style: none; }
@@ -167,10 +178,55 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
     </section>
 
     <section>
-      <h2>O risco é meu</h2>
       <div class="garantia">
-        <div class="gar"><b>7 dias, sem perguntas</b>Entrou, olhou e não gostou? Me pede e eu devolvo 100% do seu dinheiro.</div>
-        <div class="gar"><b>30 dias, aplicando</b>Seguiu o passo a passo e, em 30 dias, não tem a sua loja no ar com o produto, a página e os anúncios rodando? Me mostra o que você fez e eu devolvo 100% do seu dinheiro.</div>
+        <p class="pre">Quer ter esses resultados, mas ainda tá com medo de arriscar?</p>
+        <p class="pre">Fica tranquilo, que eu vou te dar uma…</p>
+        <div class="tit">Garantia DUPLA</div>
+
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+          <defs>
+            <linearGradient id="ouro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d67a"/><stop offset=".5" stop-color="#d9a441"/><stop offset="1" stop-color="#8a5f14"/></linearGradient>
+            <radialGradient id="ouroC" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#ffe9a8"/><stop offset=".55" stop-color="#e0ad47"/><stop offset="1" stop-color="#9a6a18"/></radialGradient>
+            <path id="arcoCima" d="M 30 100 A 70 70 0 0 1 170 100"/>
+            <path id="arcoBaixo" d="M 28 100 A 72 72 0 0 0 172 100"/>
+          </defs>
+        </svg>
+
+        <div class="selos">
+          <div class="selo">
+            <svg viewBox="0 0 200 200" role="img" aria-label="Garantia de 7 dias, sem perguntas">
+              <circle cx="100" cy="100" r="96" fill="url(#ouro)"/>
+              <circle cx="100" cy="100" r="86" fill="#141311"/>
+              <circle cx="100" cy="100" r="58" fill="url(#ouroC)" stroke="#f6d67a" stroke-width="2"/>
+              <text font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="15" fill="#f6d67a" letter-spacing="3"><textPath href="#arcoCima" startOffset="50%" text-anchor="middle">GARANTIA</textPath></text>
+              <text font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="12.5" fill="#f6d67a" letter-spacing="2"><textPath href="#arcoBaixo" startOffset="50%" text-anchor="middle">SEM PERGUNTAS</textPath></text>
+              <text x="100" y="118" text-anchor="middle" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="58" fill="#1a1305">7</text>
+              <text x="100" y="140" text-anchor="middle" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="15" fill="#1a1305" letter-spacing="2">DIAS</text>
+              <text x="100" y="66" text-anchor="middle" font-size="12" fill="#1a1305">★ ★ ★</text>
+            </svg>
+            <b>7 dias</b><span>Não gostou? Devolvo tudo.</span>
+          </div>
+          <div class="selo">
+            <svg viewBox="0 0 200 200" role="img" aria-label="Garantia de 30 dias, com a loja no ar">
+              <circle cx="100" cy="100" r="96" fill="url(#ouro)"/>
+              <circle cx="100" cy="100" r="86" fill="#141311"/>
+              <circle cx="100" cy="100" r="58" fill="url(#ouroC)" stroke="#f6d67a" stroke-width="2"/>
+              <text font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="15" fill="#f6d67a" letter-spacing="3"><textPath href="#arcoCima" startOffset="50%" text-anchor="middle">GARANTIA</textPath></text>
+              <text font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="12.5" fill="#f6d67a" letter-spacing="2"><textPath href="#arcoBaixo" startOffset="50%" text-anchor="middle">LOJA NO AR</textPath></text>
+              <text x="100" y="118" text-anchor="middle" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="52" fill="#1a1305">30</text>
+              <text x="100" y="140" text-anchor="middle" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="15" fill="#1a1305" letter-spacing="2">DIAS</text>
+              <text x="100" y="66" text-anchor="middle" font-size="12" fill="#1a1305">★ ★ ★</text>
+            </svg>
+            <b>30 dias</b><span>Loja no ar, ou devolvo.</span>
+          </div>
+        </div>
+
+        <div class="gtexto">
+          <p><strong>Garantia 1, de 7 dias, sem perguntas.</strong> Entrou, olhou e não gostou? Me pede e eu devolvo 100% do seu dinheiro. Sem formulário, sem justificativa.</p>
+          <p><strong>Garantia 2, de 30 dias, aplicando.</strong> Seguiu o passo a passo e, em 30 dias, não tem a sua loja no ar com o produto, a página e os anúncios rodando? Me mostra o que você fez e eu devolvo 100% do seu dinheiro.</p>
+          <p>É isso mesmo: ou você vende, ou você pega o seu dinheiro de volta. <strong>O risco é todo meu.</strong></p>
+        </div>
+        <a class="cta verde" id="btn-g" href="#" data-checkout style="margin-top:22px">Quero entrar sem risco</a>
       </div>
     </section>
 
