@@ -83,8 +83,14 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
   .stack li b { font-weight: 700; }
   .stack li .v { flex: none; color: #e5484d; font-weight: 800; white-space: nowrap; }
   .stack li .v s { text-decoration-thickness: 2px; }
-  .stack li.total { background: #0b0b0a; border-color: #3a3833; }
-  .stack li.total b { text-transform: uppercase; letter-spacing: .04em; }
+  /* "Valor incalculável": selo âmbar, para destacar do riscado */
+  .stack li .v.inc { color: var(--accent-ink); background: var(--accent); border-radius: 999px; padding: 6px 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; box-shadow: 0 0 0 3px rgba(217,164,65,.18); }
+  .stack li.bonus { border-color: rgba(217,164,65,.45); background: #19160f; }
+  /* TOTAL: linha maior, com a soma em destaque */
+  .stack li.total { background: linear-gradient(90deg, #1c1a16, #0b0b0a); border: 1.5px solid var(--accent); padding: 16px 14px; margin-top: 6px; }
+  .stack li.total b { font: 800 18px/1 Archivo, sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+  .stack li.total .v { font: 800 22px/1 Archivo, sans-serif; }
+  .stack li.total .v s { text-decoration-thickness: 3px; }
   .agora { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 26px 0 18px; }
   .agora .txt { font: 800 clamp(16px, 4.6vw, 20px)/1.15 Archivo, sans-serif; text-transform: uppercase; }
   .agora .txt small { display: block; font: 500 clamp(14px, 4vw, 17px)/1.2 Inter, sans-serif; text-transform: none; margin-top: 4px; color: var(--text); }
@@ -145,9 +151,9 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
           <li><b>BÔNUS: Como escalar sem quebrar</b><span class="v"><s>R$ 397,00</s></span></li>
           <li><b>BÔNUS: Comunidade Loja Lucrativa (suporte do time por 30 dias)</b><span class="v"><s>R$ 400,00</s></span></li>
           <li><b>BÔNUS: Operação Aberta ao vivo, 1x por mês</b><span class="v"><s>R$ 997,00</s></span></li>
-          <li><b>BÔNUS DE HOJE: Kits e produto a mais no checkout</b><span class="v">Valor incalculável</span></li>
-          <li><b>Garantia dupla: 7 dias + 30 dias com a loja no ar</b><span class="v">Valor incalculável</span></li>
-          <li><b>Acesso imediato, pagamento único, sem mensalidade</b><span class="v">Valor incalculável</span></li>
+          <li class="bonus"><b>BÔNUS DE HOJE: Kits e produto a mais no checkout</b><span class="v inc">Valor incalculável</span></li>
+          <li class="bonus"><b>Garantia dupla: 7 dias + 30 dias com a loja no ar</b><span class="v inc">Valor incalculável</span></li>
+          <li class="bonus"><b>Acesso imediato, pagamento único, sem mensalidade</b><span class="v inc">Valor incalculável</span></li>
           <li class="total"><b>Total</b><span class="v"><s>R$ 6.379,00</s></span></li>
         </ul>
 
