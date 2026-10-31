@@ -9,10 +9,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Vturb: carregamento mais rápido do player (descomentar e trocar o ID quando o vídeo da lead subir) -->
-<!-- <link rel="preload" href="https://scripts.converteai.net/8613ae52-f6c8-44a0-9cd1-201746d9a33e/players/ID_DO_PLAYER/v4/player.js" as="script"> -->
+<!-- Vturb: carregamento mais rápido do player (teste A/B das leads) -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/8613ae52-f6c8-44a0-9cd1-201746d9a33e/ab-test/6ae5f00e3aa745ced179d2c1/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://m3u8.vturb.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
 
 <!-- ===== PIXEL META (Sevet) ===== -->
 <script>
@@ -102,9 +107,10 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
 </header>
 
 <main class="wrap">
-  <!-- ===== PLAYER VTURB (conta HS). Teste A/B das leads é feito dentro da Vturb: cole aqui o código do player (ou do teste A/B) no lugar do bloco .player-ph. ===== -->
+  <!-- ===== PLAYER VTURB (conta HS): teste A/B "MLL - Teste de leads (2, 5, 6)", divisão 33/33/33 feita pela Vturb ===== -->
   <div class="player" id="vsl">
-    <div class="player-ph">O vídeo da VSL entra aqui.</div>
+    <vturb-smartplayer id="ab-6ae5f00e3aa745ced179d2c1" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+    <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/8613ae52-f6c8-44a0-9cd1-201746d9a33e/ab-test/6ae5f00e3aa745ced179d2c1/player.js",s.async=!0,document.head.appendChild(s);</script>
   </div>
   <p class="som">Confira se o som do seu celular está ligado.</p>
 
@@ -205,21 +211,31 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
     }, true);
   })();
 
-  // Mostra o que tem .esconder no minuto do pitch.
-  // Ajustar PITCH_SEGUNDOS quando as versões estiverem editadas (minuto em que aparece o preço).
-  var PITCH_SEGUNDOS = 0; // a definir
-  (function esperaPlayer(tentativas) {
-    var player = document.querySelector('vturb-smartplayer');
-    if (player) {
-      player.addEventListener('player:ready', function () {
-        player.displayHiddenElements(PITCH_SEGUNDOS, ['.esconder'], { persist: true });
-      });
-    } else if (tentativas > 0) {
-      setTimeout(function () { esperaPlayer(tentativas - 1); }, 300);
-    }
-  })(40);
+  // Mostra o que tem .esconder no minuto do pitch de cada lead (o teste A/B escolhe o vídeo).
+  // delay = segundo em que o Highor fala "12 vezes de R$ 30,71" em cada versão (transcrição de 31/10).
+  // Chave = ID do player e ID do vídeo na Vturb, para valer com qualquer um dos dois que o evento trouxer.
+  var listPitch = {
+    '6ae5ec33afbe3cdd04259ab6': { delay: 931, lead: 'lead2' }, '6ae5ec083aa745ced179d058': { delay: 931, lead: 'lead2' },
+    '6ae5ec6258bdaae9dd249071': { delay: 937, lead: 'lead5' }, '6ae5ec3458bdaae9dd24905e': { delay: 937, lead: 'lead5' },
+    '6ae5ecbed653f6988a10d680': { delay: 932, lead: 'lead6' }, '6ae5ec63a91a049aa979d358': { delay: 932, lead: 'lead6' }
+  };
+  var pitchIniciado = false;
+  document.addEventListener('player:ready', function (event) {
+    if (pitchIniciado) return;
+    var detail = event.detail || {};
+    var config = detail.config || {};
+    var player = detail.player || document.querySelector('vturb-smartplayer');
+    var cfg = listPitch[config.id] || listPitch[config.videoId] || listPitch[config.video_id];
+    if (!player || !cfg) return;
+    pitchIniciado = true;
+    player.displayHiddenElements(cfg.delay, ['.esconder'], { persist: true });
+    // Marca a lead no sck dos botões da página (o utm_content do anúncio fica intacto; os botões da Vturb já mandam o sck dela).
+    document.querySelectorAll('[data-checkout]').forEach(function (a) {
+      try { var u = new URL(a.href); if (!u.searchParams.get('sck')) { u.searchParams.set('sck', cfg.lead); a.href = u.toString(); } } catch (e) {}
+    });
+  });
 
-  // Enquanto não há player (rascunho), ?preview=1 mostra tudo.
+  // ?preview=1 mostra tudo (conferência).
   if (new URLSearchParams(location.search).get('preview') === '1') {
     document.querySelectorAll('.esconder').forEach(function (el) { el.style.display = 'block'; });
   }
