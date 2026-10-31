@@ -42,10 +42,9 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
   body { background: var(--bg); color: var(--text); font: 400 17px/1.55 Inter, system-ui, sans-serif; }
   .wrap { max-width: 560px; margin: 0 auto; padding: 0 16px; }
 
-  .tarja { background: #e5484d; color: #fff; text-align: center; padding: 12px 16px; font: 800 clamp(12px, 3.7vw, 20px)/1.3 Archivo, sans-serif; text-transform: uppercase; letter-spacing: 0; white-space: nowrap; }
-  .tarja s { opacity: .85; }
+  .tarja { background: #000; color: #fff; text-align: center; padding: 12px 16px; font: 800 clamp(14px, 4.4vw, 22px)/1.3 Archivo, sans-serif; text-transform: uppercase; letter-spacing: 0; white-space: nowrap; }
   @media (max-width: 359px) { .tarja { white-space: normal; } }
-  .tarja b { color: #ffe14d; }
+  .tarja b { color: #e5484d; }
   header { padding: 22px 0 6px; text-align: center; }
   h1 { font: 800 clamp(26px, 7vw, 36px)/1.12 Archivo, sans-serif; letter-spacing: -.01em; margin: 12px 0 10px; }
   h1 em { font-style: normal; color: var(--accent); }
@@ -130,7 +129,14 @@ if (PIXEL_ID !== 'SEU_PIXEL_ID') { fbq('init', PIXEL_ID); fbq('track', 'PageView
 </head>
 <body>
 
-<div class="tarja">Aula liberada | De: <s>R$697,00</s> por: <b>R$0,00</b></div>
+<div class="tarja">Esse vídeo sai do ar hoje <b id="hoje"></b></div>
+<script>
+  // Data de hoje de quem está vendo (fuso do Brasil), no formato dd/mm/aaaa.
+  (function () {
+    var p = new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date());
+    document.getElementById('hoje').textContent = p;
+  })();
+</script>
 
 <!-- Headline removida em 31/10 (Meta reprovando a página). Se voltar, entra aqui dentro do <header class="wrap">. -->
 
